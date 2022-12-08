@@ -34,13 +34,21 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   // complete the formSubmission() function. formSubmission() will take in a document parameter 
   // and strings representing the pilot, co-pilot, fuel level, and cargo mass. 
   // pilot, co-pilot, fuel level, and cargo mass
-  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let fuelStatus = document.getElementById("fuelStatus");
-    let cargoStatus = document.getElementById("cargoStatus");
-    let pilotStatus = document.getElementById("pilotStatus");
-    let copilotStatus = document.getElementById("copilotStatus");
-    let launchStatus = document.getElementById("launchStatus");
+  let copilotStatus = document.getElementById("copilotStatus");
+  let fuelStatus = document.getElementById("fuelStatus");
+  let launchStatus = document.getElementById("launchStatus");
+  let cargoStatus = document.getElementById("cargoStatus");
+  let pilotStatus = document.getElementById("pilotStatus");
+
+  if (validateInput(pilot.value) === "Empty" && "Is a Number",
+  validateInput(copilot.value) === "Empty" && "Is a Number",
+  validateInput(fuelLevel.value) === "Empty" && "Not a Number",
+  validateInput(cargoLevel.value) === "Empty" && "Not a Number") {
+    alert("Invalid input");
+    
+
 }
+
 
 async function myFetch() {
     let planetsReturned;
