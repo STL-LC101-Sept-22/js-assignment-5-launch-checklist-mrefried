@@ -1,11 +1,20 @@
 // Write your helper functions here!
-require('isomorphic-fetch');
+// require('isomorphic-fetch');
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl){
+function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
-   let targetMission = document.getElementById('targetMission');
+
+let missionTarget = document.getElementById('missionTarget');
+// missionTarget.innerHTML = 
+// {"name": name,
+// "Diameter": diameter,
+// "Star": star,
+// "Distance from earth": distance,
+// "Number of moons": moons,
+// "Image": imageUrl
+// };
   
-   targetMission.innerHTML = `
+   missionTarget.innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
                     <li>Name: ${name} </li>
@@ -40,22 +49,21 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let cargoStatus = document.getElementById("cargoStatus");
   let pilotStatus = document.getElementById("pilotStatus");
 
-  if (validateInput(pilot.value) === "Empty" && "Is a Number",
-  validateInput(copilot.value) === "Empty" && "Is a Number",
-  validateInput(fuelLevel.value) === "Empty" && "Not a Number",
-  validateInput(cargoLevel.value) === "Empty" && "Not a Number") {
-    window.alert("Invalid input");
-  } else {
-    pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch`;
-    copilotStatus.innerHTML = `Co-pilot ${copilot.value} is ready for launch`;
-    list.style.visibility = 'visible';
-  } 
+  if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
+    alert("All fields are required!");
+} else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
+    alert("Be sure to only enter valid information in the inputs!");
+} else {
+    list.style.visibility = "visible";
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+};
   if(fuelLevel.value < 10000){
     fuelStatus.innerHTML = `Fuel level too low for launch`;
     launchStatus.style.color = 'red'
     launchStatus.innerHTML = `Shuttle not ready for launch`;
   } else if (cargoLevel.value > 10000) {
-    cargoStatus.innerHTML = `Cargo mass too hight for launch`;
+    cargoStatus.innerHTML = `Cargo mass too high for launch`;
     launchStatus.style.color = 'red';
     launchStatus.innerHTML = `Shuttle not ready for launch`;
   } 
